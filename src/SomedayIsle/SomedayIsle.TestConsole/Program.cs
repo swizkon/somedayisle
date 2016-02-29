@@ -4,14 +4,46 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using StructureMap;
 
 namespace SomedayIsle.TestConsole
 {
     public class Program
     {
+        // IContainer ioc;
+
+        static IContainer ConfigureContainer()
+        {
+            var container = new Container(cfg =>
+            {
+                /*
+                cfg .For<MySqlAgent>()
+                    .Use<MySqlAgent>()
+                    .Ctor<string>("connectionString")
+                    .Is("Server=127.0.0.1;Database=somedayisle_projections;Uid=NHibernate;Pwd=NHibernate;");
+                */
+                var store = cfg.ForConcreteType<MySqlAgent>().Configure;
+                store
+                    .Ctor<string>("connectionString")
+                    .Is("Server=127.0.0.1;Database=somedayisle_projections;Uid=NHibernate;Pwd=NHibernate;");
+            });
+
+
+            return container;
+
+        }
+
         static void Main(string[] args)
         {
-            MySqlAgent agent = new MySqlAgent();
+            //  "Server=127.0.0.1;Database=somedayisle_projections;Uid=NHibernate;Pwd=NHibernate;";
+
+            var ioc = ConfigureContainer();
+
+            var db = ioc.GetInstance<MySqlAgent>();
+
+            // string connString = "Server=127.0.0.1;Database=somedayisle_projections;Uid=NHibernate;Pwd=NHibernate;";
+
+            var agent = ioc.GetInstance<MySqlAgent>();
 
             string journeyName = null;
 

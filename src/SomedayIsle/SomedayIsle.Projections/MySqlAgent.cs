@@ -22,14 +22,14 @@ namespace SomedayIsle.Projections
     {
         Configuration cfg;
 
-        public MySqlAgent()
+        public MySqlAgent(string connectionString)
         {
             cfg = new Configuration()
-                           .DataBaseIntegration(db =>
-                           {
-                               db.ConnectionString = "Server=127.0.0.1;Database=somedayisle_projections;Uid=NHibernate;Pwd=NHibernate;";
-                               db.Dialect<MySQLDialect>();
-                           });
+                .DataBaseIntegration(db =>
+                {
+                    db.ConnectionString = connectionString;
+                    db.Dialect<MySQLDialect>();
+                });
 
 
 
@@ -41,39 +41,20 @@ namespace SomedayIsle.Projections
             cfg.AddMapping(mapping);
         }
 
-        public object TablesAsList()
-        {
-
-            /* Create a session and execute a query: */
-            using (ISessionFactory factory = cfg.BuildSessionFactory())
-            using (ISession session = factory.OpenSession())
-            using (ITransaction tx = session.BeginTransaction())
-            {
-                var j = new Journey(){ Id = Guid.NewGuid(), Title = "Stop biting my nails", Description = "This is the description"};
-                session.Save(j);
-                tx.Commit();
-            }
-
-            return null;
-
-        }
-
-        public void CreateJourney(Guid id, string title ,string description)
+        public void CreateJourney(Guid id, string title, string description)
         {
             /* Create a session and execute a query: */
-            using (ISessionFactory factory = cfg.BuildSessionFactory())
-            using (ISession session = factory.OpenSession())
-            using (ITransaction tx = session.BeginTransaction())
+            transaction((session, tx) =>
             {
                 var j = new Journey()
                 {
-                    Id = id, 
-                    Title = title, 
+                    Id = id,
+                    Title = title,
                     Description = description
                 };
                 session.Save(j);
                 tx.Commit();
-            }
+            });
         }
 
         public IEnumerable<Journey> Journeys()
@@ -90,14 +71,23 @@ namespace SomedayIsle.Projections
         public void DropJourney(Guid id)
         {
             Console.WriteLine("DropJourney(Guid " + id + ")");
+
+            transaction((session, tx) =>
+            {
+                var obj = session.Get<Journey>(id);
+                session.Delete(obj);
+                tx.Commit();
+            });
+        }
+
+        private void transaction(Action<ISession, ITransaction> a)
+        {
             /* Create a session and execute a query: */
             using (ISessionFactory factory = cfg.BuildSessionFactory())
             using (ISession session = factory.OpenSession())
             using (ITransaction tx = session.BeginTransaction())
             {
-                var obj = session.Get<Journey>(id);
-                session.Delete(obj);
-                tx.Commit();
+                a(session, tx);
             }
         }
     }

@@ -1,0 +1,3 @@
+﻿CREATE USER 'NHibernate'@'localhost' IDENTIFIED BY 'NHibernate';
+
+GRANT ALL ON somedayisle_projections.* TO 'NHibernate'@'localhost';
