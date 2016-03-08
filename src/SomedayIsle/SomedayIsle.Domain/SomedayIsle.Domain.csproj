@@ -7,7 +7,7 @@
     <ProjectGuid>{8D54A13B-249D-41AC-9BF4-BD7238243DB0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SomedayIsle.Domain</RootNamespace>
+    <RootNamespace>SomedayIsle</RootNamespace>
     <AssemblyName>SomedayIsle.Domain</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Nuclear.Core">
+      <HintPath>..\packages\Nuclear.Core.1.0.0.0\lib\net45\Nuclear.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,8 +42,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Journey.cs" />
+    <Compile Include="Commands\CreateJourney.cs" />
+    <Compile Include="Model\Detour.cs" />
+    <Compile Include="Model\FinalDestination.cs" />
+    <Compile Include="Model\Journey.cs" />
+    <Compile Include="Events\JourneyCreated.cs" />
+    <Compile Include="Model\Stop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

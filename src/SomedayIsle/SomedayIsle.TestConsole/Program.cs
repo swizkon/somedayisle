@@ -5,6 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using StructureMap;
+using System.Configuration;
+using System.Diagnostics;
+using Nuclear.Messaging;
+using Nuclear.Lazy;
 
 namespace SomedayIsle.TestConsole
 {
@@ -16,32 +20,37 @@ namespace SomedayIsle.TestConsole
         {
             var container = new Container(cfg =>
             {
-                /*
-                cfg .For<MySqlAgent>()
-                    .Use<MySqlAgent>()
-                    .Ctor<string>("connectionString")
-                    .Is("Server=127.0.0.1;Database=somedayisle_projections;Uid=NHibernate;Pwd=NHibernate;");
-                */
+                cfg.For<Bus>().Use<Switchboard>();
+
                 var store = cfg.ForConcreteType<MySqlAgent>().Configure;
                 store
                     .Ctor<string>("connectionString")
                     .Is("Server=127.0.0.1;Database=somedayisle_projections;Uid=NHibernate;Pwd=NHibernate;");
             });
 
-
             return container;
-
         }
+
+
 
         static void Main(string[] args)
         {
-            //  "Server=127.0.0.1;Database=somedayisle_projections;Uid=NHibernate;Pwd=NHibernate;";
-
+            var settings = ConfigurationManager.AppSettings;
             var ioc = ConfigureContainer();
 
-            var db = ioc.GetInstance<MySqlAgent>();
 
-            // string connString = "Server=127.0.0.1;Database=somedayisle_projections;Uid=NHibernate;Pwd=NHibernate;";
+            IDictionary<Guid, string> journeys = new Dictionary<Guid, string>()
+            {
+                {Guid.NewGuid(), ""}
+            };
+            
+            Bus bus = ioc.GetInstance<Bus>();
+
+
+
+            // bus.Send()
+
+
 
             var agent = ioc.GetInstance<MySqlAgent>();
 
@@ -50,18 +59,27 @@ namespace SomedayIsle.TestConsole
             do {
                 Console.WriteLine("Enter a name of a journey:");
                 journeyName = Console.ReadLine();
-                agent.CreateJourney(Guid.NewGuid(), journeyName, "");
+
+                if (!String.IsNullOrEmpty(journeyName))
+                    agent.CreateJourney(Guid.NewGuid(), journeyName, "");
+
             } while(!String.IsNullOrEmpty(journeyName));
 
-            var journeys = agent.Journeys();
 
-            foreach (var journey in journeys)
+
+            var storedJourneys = agent.Journeys();
+
+            foreach (var storedJourney in storedJourneys)
             {
-                Console.WriteLine(journey.Title);
-                agent.DropJourney(journey.Id);
+                Console.WriteLine(storedJourney.Title);
+                agent.DropJourney(storedJourney.Id);
             }
 
-            Console.ReadKey();
+            if(Environment.UserInteractive)
+            {
+                Console.WriteLine("PRESS ANY KEY TO EXIT");
+                Console.ReadKey();
+            }
         }
     }
 }

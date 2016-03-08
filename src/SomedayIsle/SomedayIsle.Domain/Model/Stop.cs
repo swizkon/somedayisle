@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SomedayIsle.Domain
+namespace SomedayIsle.Model
 {
-    public class Journey
+    public class Stop
     {
     }
 }

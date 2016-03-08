@@ -1,3 +1,9 @@
 ﻿CREATE USER 'NHibernate'@'localhost' IDENTIFIED BY 'NHibernate';
 
 GRANT ALL ON somedayisle_projections.* TO 'NHibernate'@'localhost';
+
+
+GRANT ALL ON eventstore_db.* TO 'eventstoreuser'@'localhost';
+-- CREATE STRUCTURE LOGIC
+REVOKE ALL ON eventstore_db.* TO 'eventstoreuser'@'localhost';
+GRANT INSERT,SELECT ON eventstore_db.* TO 'eventstoreuser'@'localhost';

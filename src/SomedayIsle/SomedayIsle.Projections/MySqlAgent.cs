@@ -31,8 +31,6 @@ namespace SomedayIsle.Projections
                     db.Dialect<MySQLDialect>();
                 });
 
-
-
             /* Add the mapping we defined: */
             var mapper = new ModelMapper();
             mapper.AddMappings(Assembly.GetExecutingAssembly().GetExportedTypes());
@@ -102,6 +100,7 @@ namespace SomedayIsle.Projections
             this.Property(p => p.Description);
         }
     }
+
 
     public class Journey
     {
