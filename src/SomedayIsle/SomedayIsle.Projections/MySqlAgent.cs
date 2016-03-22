@@ -6,10 +6,7 @@ using NHibernate.Mapping.ByCode;
 using NHibernate.Mapping.ByCode.Conformist;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 
 // NHibernate.Cfg.MappingSchema
@@ -20,11 +17,12 @@ namespace SomedayIsle.Projections
 {
     public class MySqlAgent
     {
-        Configuration cfg;
+        ProjectionsUtil projUtil;
+        // Configuration cfg;
 
         public MySqlAgent(string connectionString)
         {
-            cfg = new Configuration()
+            var cfg = new Configuration()
                 .DataBaseIntegration(db =>
                 {
                     db.ConnectionString = connectionString;
@@ -33,54 +31,59 @@ namespace SomedayIsle.Projections
 
             /* Add the mapping we defined: */
             var mapper = new ModelMapper();
-            mapper.AddMappings(Assembly.GetExecutingAssembly().GetExportedTypes());
+            // mapper.AddMappings(Assembly.GetExecutingAssembly().GetExportedTypes());
+            mapper.AddMapping(typeof(JourneyMap));
+            mapper.AddMapping(typeof(StopMap));
 
             HbmMapping mapping = mapper.CompileMappingForAllExplicitlyAddedEntities();
             cfg.AddMapping(mapping);
+
+            this.projUtil = new ProjectionsUtil(cfg);
+
+            // this.projUtil.CreateDatabaseSchemaFromConfiguration();
         }
 
-        public void CreateJourney(Guid id, string title, string description)
+
+        public void CreateJourney(Guid id, string title, string description, DateTimeOffset creationDate)
         {
             /* Create a session and execute a query: */
-            transaction((session, tx) =>
+            this.projUtil.Transaction((session) =>
             {
-                var j = new Journey()
+                var j = new JourneyDto()
                 {
                     Id = id,
                     Title = title,
-                    Description = description
+                    Description = description,
+                    CreationDate = creationDate.ToUniversalTime().Date
                 };
-                session.Save(j);
-                tx.Commit();
+                session.SaveOrUpdate(j);
             });
         }
 
-        public IEnumerable<Journey> Journeys()
+        public IEnumerable<JourneyDto> Journeys()
         {
-            /* Create a session and execute a query: */
-            using (ISessionFactory factory = cfg.BuildSessionFactory())
-            using (ISession session = factory.OpenSession())
-            using (ITransaction tx = session.BeginTransaction())
-            {
-                return session.QueryOver<Journey>().List();
-            }
+            return this.projUtil.Query<JourneyDto>(
+                (session) =>
+                {
+                    return session.QueryOver<JourneyDto>().List();
+                }
+                );
         }
 
         public void DropJourney(Guid id)
         {
             Console.WriteLine("DropJourney(Guid " + id + ")");
 
-            transaction((session, tx) =>
+            this.projUtil.Transaction((session) =>
             {
-                var obj = session.Get<Journey>(id);
+                var obj = session.Get<JourneyDto>(id);
                 session.Delete(obj);
-                tx.Commit();
             });
         }
 
+        /*
         private void transaction(Action<ISession, ITransaction> a)
         {
-            /* Create a session and execute a query: */
             using (ISessionFactory factory = cfg.BuildSessionFactory())
             using (ISession session = factory.OpenSession())
             using (ITransaction tx = session.BeginTransaction())
@@ -88,9 +91,39 @@ namespace SomedayIsle.Projections
                 a(session, tx);
             }
         }
+        */
+
+        public void RegisterStop(Guid journeyId, Guid stopId, string title, string description)
+        {
+            /* Create a session and execute a query: */
+            this.projUtil.Transaction((session) =>
+            {
+                var j = new StopDto()
+                {
+                    JourneyId = journeyId,
+                    StopId = stopId,
+                    Title = title,
+                    Description = description
+                };
+                session.SaveOrUpdate(j);
+            });
+        }
+
+        public IEnumerable<StopDto> Stops(Guid journeyId)
+        {
+            Console.WriteLine("Stops(Guid journeyId)");
+
+            return this.projUtil.Query<StopDto>(
+                (session) =>
+                {
+                    return session.QueryOver<StopDto>().Where((o) => o.JourneyId == journeyId).List();
+                }
+                );
+        }
     }
 
-    public class JourneyMap : ClassMapping<Journey>
+
+    public class JourneyMap : ClassMapping<JourneyDto>
     {
         public JourneyMap()
         {
@@ -98,13 +131,40 @@ namespace SomedayIsle.Projections
             this.Id(p => p.Id);
             this.Property(p => p.Title);
             this.Property(p => p.Description);
+            this.Property(p => p.CreationDate);
         }
     }
 
 
-    public class Journey
+    public class JourneyDto
     {
         public virtual Guid Id { get; set; }
+
+        public virtual string Title { get; set; }
+
+        public virtual string Description { get; set; }
+
+        public virtual DateTime CreationDate { get; set; }
+    }
+
+
+    public class StopMap : ClassMapping<StopDto>
+    {
+        public StopMap()
+        {
+            this.Table("journey_stops");
+            this.Id(p => p.StopId);
+            this.Property(p => p.JourneyId);
+            this.Property(p => p.Title);
+            this.Property(p => p.Description);
+        }
+    }
+
+    public class StopDto
+    {
+        public virtual Guid StopId { get; set; }
+
+        public virtual Guid JourneyId { get; set; }
 
         public virtual string Title { get; set; }
 

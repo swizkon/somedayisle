@@ -1,0 +1,7 @@
+﻿@model Guid
+
+@{
+    var fieldName = ViewData.TemplateInfo.HtmlFieldPrefix;
+    var fieldValue = ViewData.TemplateInfo.FormattedModelValue;
+}
+<input name="@fieldName" type="hidden" value="@Model.ToString()" />

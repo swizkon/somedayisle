@@ -1,12 +1,10 @@
-﻿using Nuclear.Messaging;
+﻿using Nuclear.Domain;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace SomedayIsle.Events
 {
-    public sealed class JourneyCreated : Event
+    /*
+    public sealed class JourneyCreated : DomainEvent
     {
         public Guid Id;
 
@@ -20,4 +18,5 @@ namespace SomedayIsle.Events
             this.Description = description;
         }
     }
+    */
 }

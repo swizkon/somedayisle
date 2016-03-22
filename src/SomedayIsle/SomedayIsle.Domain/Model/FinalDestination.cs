@@ -6,7 +6,4 @@ using System.Threading.Tasks;
 
 namespace SomedayIsle.Model
 {
-    class FinalDestination
-    {
-    }
 }

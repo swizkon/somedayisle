@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SomedayIsle.Projections", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SomedayIsle.TestConsole", "SomedayIsle.TestConsole\SomedayIsle.TestConsole.csproj", "{A02F50E4-A2DF-4A96-A468-C94EE518F1FC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SomedayIsle.WebApp", "SomedayIsle.WebApp\SomedayIsle.WebApp.csproj", "{429B5B9E-F290-404C-B4E6-00A15A3CD703}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A02F50E4-A2DF-4A96-A468-C94EE518F1FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A02F50E4-A2DF-4A96-A468-C94EE518F1FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A02F50E4-A2DF-4A96-A468-C94EE518F1FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{429B5B9E-F290-404C-B4E6-00A15A3CD703}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{429B5B9E-F290-404C-B4E6-00A15A3CD703}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{429B5B9E-F290-404C-B4E6-00A15A3CD703}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{429B5B9E-F290-404C-B4E6-00A15A3CD703}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

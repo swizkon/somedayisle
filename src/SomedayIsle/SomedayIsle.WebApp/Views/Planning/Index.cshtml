@@ -1,0 +1,22 @@
+﻿@model List<SomedayIsle.Projections.JourneyDto>
+
+<div id="body">
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>Planning</h1>
+                <h2>Pnannin - Journey index</h2>
+            </hgroup>
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+        <h3>We suggest the following steps:</h3>
+        <ol>
+            @foreach (var item in Model)
+            {
+                <li>@item.Title</li>
+                @Html.ActionLink(item.Title, "journeys", "planning", new { id = item.Id }, null)
+            }
+        </ol>
+    </section>
+</div>
