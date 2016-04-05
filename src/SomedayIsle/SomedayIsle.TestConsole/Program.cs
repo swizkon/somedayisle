@@ -17,6 +17,7 @@ using System;
 using System.Configuration;
 using System.Net;
 using System.Text;
+using MassTransit;
 
 namespace SomedayIsle.TestConsole
 {
@@ -37,12 +38,30 @@ namespace SomedayIsle.TestConsole
     }
     */
 
+    public class Broker
+    {
+        // MassTransit.Bus; 
+        public Broker()
+        {
+            var b = MassTransit.Bus.Factory.CreateUsingInMemory(cfg =>
+            {
+                cfg.ReceiveEndpoint("queue_name", ep =>
+                {
+                    //configure the endpoint
+                });
+            });
+
+            b.Start();
+
+        }
+    }
+
     public class Program
     {
         // IContainer ioc;
-        static readonly Bus bus = ConfigureBus();
+        static readonly Nuclear.Messaging.Bus bus = ConfigureBus();
 
-        static Bus ConfigureBus()
+        static Nuclear.Messaging.Bus ConfigureBus()
         {
             return new Switchboard();
         }
