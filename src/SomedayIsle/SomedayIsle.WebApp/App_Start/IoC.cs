@@ -24,7 +24,6 @@ namespace SomedayIsle.WebApp
 
             b.RegisterHandler<CreateJourney>((c) =>
             {
-                // IAggregateEventStore aggStore = EventStore();
                 var repository = new RepositoryFactory(bus, container).Build<Journey>();
                 var journey = new Journey(c.Id, c.Title, c.Description);
                 repository.Save(journey);
@@ -33,8 +32,6 @@ namespace SomedayIsle.WebApp
 
             b.RegisterHandler<AddStopToJourney>((c) =>
             {
-                // IAggregateEventStore aggStore = EventStore();
-                // var repository = new EventSourcedAggregateRepository<Journey>(aggStore);
                 var repository = new RepositoryFactory(bus, container).Build<Journey>();
                 var journey = repository.GetById(c.JourneyId);
                 journey.AddStop(c.StopId, c.Name);

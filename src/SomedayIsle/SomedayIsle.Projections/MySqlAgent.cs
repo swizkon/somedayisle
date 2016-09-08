@@ -72,6 +72,7 @@ namespace SomedayIsle.Projections
 
         public void DropJourney(Guid id)
         {
+
             Console.WriteLine("DropJourney(Guid " + id + ")");
 
             this.projUtil.Transaction((session) =>

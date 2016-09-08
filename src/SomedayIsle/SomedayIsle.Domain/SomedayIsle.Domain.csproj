@@ -36,6 +36,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\CreateJourney.cs" />
+    <Compile Include="InsufficientFundsException.cs" />
     <Compile Include="Model\Detour.cs" />
     <Compile Include="Model\FinalDestination.cs" />
     <Compile Include="Model\Journey.cs" />
@@ -56,6 +58,8 @@
     <Compile Include="TicketOffice\Events.cs" />
     <Compile Include="TicketOffice\Model\JourneyBooking.cs" />
     <Compile Include="Travelers\Events.cs" />
+    <Compile Include="Travelers\Ticket.cs" />
+    <Compile Include="Travelers\Traveler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

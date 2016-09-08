@@ -40,7 +40,7 @@ namespace SomedayIsle.WebApp
             stops.Add("Week 1: Legs & Back");
             stops.Add("Week 1: Sprawl & Brawl");
             stops.Add("Week 1: Rest day");
-
+            /*
             stops.Add("");
             stops.Add("");
             stops.Add("");
@@ -53,6 +53,7 @@ namespace SomedayIsle.WebApp
             stops.Add("");
             stops.Add("");
             stops.Add("");
+            */
 
             foreach (var stop in stops.Where(s => s != ""))
             {

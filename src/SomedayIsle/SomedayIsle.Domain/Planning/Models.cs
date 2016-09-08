@@ -50,7 +50,7 @@ namespace SomedayIsle.Planning.Models
     }
 
 
-    class FinalDestination
+    public class FinalDestination
     {
     }
 }

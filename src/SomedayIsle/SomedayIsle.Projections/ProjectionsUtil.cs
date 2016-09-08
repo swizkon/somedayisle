@@ -13,12 +13,10 @@ namespace SomedayIsle.Projections
         static bool schemaCreated = false;
         Configuration cfg;
 
-
         public ProjectionsUtil(Configuration config)
         {
             this.cfg = config;
         }
-
 
         public void Transaction(Action<ISession> unitOfWork)
         {
@@ -45,10 +43,9 @@ namespace SomedayIsle.Projections
         public void CreateDatabaseSchemaFromConfiguration()
         {
             /*
-            if (!schemaCreated)
+            if (schemaCreated)
                 return; 
             */
-
 
             if (!schemaCreated)
             {

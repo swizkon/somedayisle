@@ -1,20 +1,19 @@
-﻿using Nuclear.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SomedayIsle.Planning.Events
+﻿namespace SomedayIsle.Planning.Events
 {
+    using System;
+    using Nuclear.Domain;
+
+    /// <summary>
+    /// JourneyCreated
+    /// </summary>
     public sealed class JourneyCreated : DomainEvent
     {
-        public Guid Id;
+        public Guid Id { get; set; }
 
-        public string Name;
-        public string Description;
+        public string Name { get; set; }
+        public string Description { get; set; }
 
-        public DateTimeOffset Timestamp;
+        public DateTimeOffset Timestamp { get; set; }
 
         public JourneyCreated(Guid id, string name, string description, DateTimeOffset timestamp)
         {
@@ -27,11 +26,11 @@ namespace SomedayIsle.Planning.Events
 
     public sealed class StopAddedToJourney : DomainEvent
     {
-        public Guid JourneyId;
-        public Guid StopId;
+        public Guid JourneyId { get; set; }
+        public Guid StopId { get; set; }
 
-        public string Name;
-        public string Description;
+        public string Name { get; set; }
+        public string Description { get; set; }
 
         public StopAddedToJourney(Guid journeyId, Guid stopId, string name, string description)
         {
