@@ -17,7 +17,7 @@
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
             <li><a href="/register">Get Started</a></li>
-            <li><a href="/about">About</a></li>
+            <li><a href="/tour">Tour</a></li>
           </ul>
         </nav>
 
