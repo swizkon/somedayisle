@@ -19,6 +19,18 @@ defmodule SomedayIsle.Router do
     get "/", PageController, :index
   end
 
+  scope "/journeys", SomedayIsle do  
+    pipe_through :browser # Use the default browser stack
+    get "/edit/:journeyid", JourneyController, :edit
+    get "/", JourneyController, :index
+    get "/new", JourneyController, :new
+    get "/:journeyid", JourneyController, :show
+    delete "/:journeyid", JourneyController, :delete
+    post "/", JourneyController, :create
+    put "/:journeyid", JourneyController, :update
+  
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", SomedayIsle do
   #   pipe_through :api
