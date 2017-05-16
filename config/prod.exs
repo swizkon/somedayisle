@@ -14,8 +14,12 @@ use Mix.Config
 config :someday_isle, SomedayIsle.Endpoint,
   http: [port: {:system, "PORT"}],
   url: [scheme: "https", host: "nameless-refuge-41556.herokuapp.com", port: 443],
+  force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/manifest.json",
   secret_key_base: System.get_env("SECRET_KEY_BASE")
+
+# Do not print debug messages in production
+config :logger, level: :info
 
 # Configure your database
 config :someday_isle, SomedayIsle.Repo,
@@ -24,9 +28,6 @@ config :someday_isle, SomedayIsle.Repo,
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
   ssl: true
 
-
-# Do not print debug messages in production
-config :logger, level: :info
 
 # ## SSL Support
 #
