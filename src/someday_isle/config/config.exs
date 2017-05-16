@@ -16,7 +16,7 @@ config :someday_isle, SomedayIsle.Endpoint,
   render_errors: [view: SomedayIsle.ErrorView, accepts: ~w(html json)],
   pubsub: [name: SomedayIsle.PubSub,
            adapter: Phoenix.PubSub.PG2]
-
+           
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
