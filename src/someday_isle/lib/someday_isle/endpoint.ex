@@ -37,6 +37,8 @@ defmodule SomedayIsle.Endpoint do
     store: :cookie,
     key: "_someday_isle_key",
     signing_salt: "35902mNt"
+  
+  plug CORSPlug
 
   plug SomedayIsle.Router
 end
