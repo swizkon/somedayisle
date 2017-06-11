@@ -5,8 +5,6 @@ defmodule SomedayIsle.CircuitController do
 
   def options(conn, _params) do
     conn
-    #circuits = Repo.all(Circuit)
-    #render(conn, "index.json", circuits: circuits)
   end
 
   def index(conn, _params) do

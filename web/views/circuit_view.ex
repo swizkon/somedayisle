@@ -1,8 +1,12 @@
 defmodule SomedayIsle.CircuitView do
   use SomedayIsle.Web, :view
 
+  #def render("index.json", %{circuits: circuits}) do
+  #  %{data: render_many(circuits, SomedayIsle.CircuitView, "circuit.json")}
+  #end
+
   def render("index.json", %{circuits: circuits}) do
-    %{data: render_many(circuits, SomedayIsle.CircuitView, "circuit.json")}
+    Enum.map(circuits, &Map.take(&1, [:id, :name, :checkpoints]))
   end
 
   def render("show.json", %{circuit: circuit}) do
