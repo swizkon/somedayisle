@@ -46,6 +46,7 @@ defmodule SomedayIsle.Router do
     pipe_through :api
     resources "/circuits", CircuitController
     options "/circuits", CircuitController, :options
+    get "/circuits/:id/tileinfo", CircuitController, :tileinfo
   end
 
 end

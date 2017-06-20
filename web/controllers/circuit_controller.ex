@@ -7,6 +7,13 @@ defmodule SomedayIsle.CircuitController do
     conn
   end
 
+  def tileinfo(conn, %{"id" => id, "x" => x, "y" => y}) do
+    circuit = Repo.get!(Circuit, id)
+    tile = circuit.datamap["heat"][y][x]
+    text conn, tile
+    # text conn, "X " <> x <> ", Y: " <> y <> " TIle" <> tile
+  end
+
   def index(conn, _params) do
     circuits = Repo.all(Circuit)
     render(conn, "index.json", circuits: circuits)
