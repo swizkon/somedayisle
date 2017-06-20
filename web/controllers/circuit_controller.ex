@@ -9,10 +9,23 @@ defmodule SomedayIsle.CircuitController do
 
   def tileinfo(conn, %{"id" => id, "x" => x, "y" => y}) do
     circuit = Repo.get!(Circuit, id)
-    tile = circuit.datamap["heat"][y][x]
+    row = circuit.datamap["heat"][y]
+    tile = calc_tile(row, String.to_integer(x))
     text conn, tile
-    # text conn, "X " <> x <> ", Y: " <> y <> " TIle" <> tile
   end
+
+  defp calc_tile(:nil, x), do: "No match on this row, fried.."
+  defp calc_tile(row, -1), do: "No match on this col"
+  defp calc_tile(row, x) do
+    tile = row[Integer.to_string(x)]
+    calc_tile(row, tile, x - 1)
+  end
+
+  defp calc_tile(row, :nil, x) do
+    calc_tile(row, x)
+  end
+  defp calc_tile(row, 1, x), do: "Hit"
+  defp calc_tile(row, 0, x), do: "Out"
 
   def index(conn, _params) do
     circuits = Repo.all(Circuit)
