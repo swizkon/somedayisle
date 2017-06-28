@@ -1,4 +1,7 @@
 import $ from "jquery"
+import Rx from "rxjs/Rx"
+
+Rx.Observable.of(1,2,3).subscribe(console.log);
 
 let circuit = {
     

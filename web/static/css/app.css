@@ -7,3 +7,35 @@ span.logo{
 /*
 My stuff
 */
+body, div.jumbotron
+{
+    background-color: #333;
+}
+div.jumbotron
+{
+    margin-bottom: 0;
+    padding: 1rem;
+}
+
+h1, h2, h3, h4 {
+    text-align: center;
+    text-shadow: 0em 0em 0.3em #000;
+    margin-bottom: .5rem;
+    font-weight: 100;
+    color: #999;
+    text-align: center;
+}
+
+h1 small {
+    text-align: center;
+    text-shadow: 0em 0em 0.3em #000;
+    margin-bottom: .5rem;
+    font-weight: 100;
+}
+
+@media screen and (max-width: 480px) {
+body, div.jumbotron
+{
+    background-color: #fff;
+}
+}

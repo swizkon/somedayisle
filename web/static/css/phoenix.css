@@ -1223,7 +1223,7 @@ h6 .small,
 .h4 .small,
 .h5 .small,
 .h6 .small {
-  font-weight: normal;
+  /* font-weight: normal;*/
   line-height: 1;
   color: #7a8288;
 }

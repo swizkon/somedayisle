@@ -46,7 +46,7 @@ defmodule SomedayIsle.Router do
     get "/edit/:id", EnduranceController, :edit
     get "/", EnduranceController, :index
     get "/new", EnduranceController, :new
-    get "/:id", EnduranceController, :show
+    get "/race/:id", EnduranceController, :show
   end
 
   # Other scopes may use custom stacks.

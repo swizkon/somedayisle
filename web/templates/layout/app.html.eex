@@ -9,8 +9,6 @@
 
     <title>Someday Isle</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>" />
-    <link rel="stylesheet" href="https://swizkon.github.io/misc/assets/css/nightmode.css" />
-
     
   </head>
 
