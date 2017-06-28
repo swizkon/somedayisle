@@ -1,0 +1,16 @@
+<h1>The tracks available</h1>
+
+<hr />
+
+<%= link "Back", to: endurance_path(@conn, :index), class: "btn btn-default" %>
+
+
+<div class="jumbotron circuit-preview">
+  <h1><%= @circuit.name %></h1>
+  <canvas class="circuit-preview" 
+    id="circuit-preview-<%= @circuit.id %>" 
+    width="540" height="270" 
+    data-scale="3"
+    data-checkpoints="<%= @circuit.checkpoints %>"></canvas>
+
+</div>

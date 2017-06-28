@@ -1,12 +1,9 @@
 import $ from "jquery"
 
 let circuit = {
-    do: function () {
-        alert('do' + arguments[0])
-    },
-
+    
     renderPreviews: function () {
-        $('canvas.circuit-checkpoints').each((i, m) => {
+        $('canvas.circuit-preview').each((i, m) => {
             var points = $(m).data('checkpoints');
             var scale = parseInt($(m).data('scale'));
             points = $.map(points, (o, i) => {

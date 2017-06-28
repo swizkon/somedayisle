@@ -8,9 +8,19 @@ defmodule SomedayIsle.EnduranceController do
     render(conn, "index.html", circuits: circuits)
   end
 
-  def show(conn, %{"circuitid" => circuitid}) do
+  #def new(conn, _params) do
+  #  changeset = Circuit.changeset(%Circuit{})
+  #  render(conn, "new.html", changeset: changeset)
+  #end
+
+  def edit(conn, %{"id" => circuitid}) do
     circuit = Repo.get!(Circuit, circuitid)
-    render(conn, "show.html", circuit: circuit)
+    render(conn, "edit.html", circuit: circuit)
   end
+
+  #def show(conn, %{"id" => circuitid}) do
+  #  circuit = Repo.get!(Circuit, circuitid)
+  #  render(conn, "show.html", circuit: circuit)
+  #end
   
 end
