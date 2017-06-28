@@ -8,11 +8,15 @@
     <meta name="author" content="">
 
     <title>Someday Isle</title>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>" />
+    <link rel="stylesheet" href="https://swizkon.github.io/misc/assets/css/nightmode.css" />
+
+    
   </head>
 
   <body>
     <div class="container">
+
       <header class="header">
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
@@ -20,8 +24,7 @@
             <li><a href="/tour">Tour</a></li>
           </ul>
         </nav>
-
-        <h1 class="">Someday Isle</h1>
+        <h3 class="">Someday Isle</h3>
       </header>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>

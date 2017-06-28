@@ -1,0 +1,20 @@
+<h1>The tracks available</h1>
+
+<hr />
+
+<%= for circuit <- @circuits do %>
+<div class="jumbotron circuit-preview">
+  <h1><%= circuit.name %></h1>
+  <canvas style="border:solid 1px blue;" class="circuit-checkpoints" 
+    id="circuit-preview-<%= circuit.id %>" 
+    width="540" height="270" 
+    data-scale="3"
+    data-checkpoints="<%= circuit.checkpoints %>"></canvas>
+  <%= link "New race on this circuit", to: endurance_path(@conn, :show, circuit), class: "btn btn-primary" %>
+  <%= link "Modify", to: endurance_path(@conn, :edit, circuit), class: "btn btn-default" %>
+</div>
+
+<% end %>
+
+<hr />
+<%= link "New circuit", to: circuit_path(@conn, :new) %>
