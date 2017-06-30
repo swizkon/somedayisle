@@ -22,8 +22,8 @@ let circuit = {
         context.clearRect(0, 0, canvas.width, canvas.height);
         context.translate(0.0, 0.0);
         
-        circuit.drawPath(context, 80 / scale, "#999", points);
-        circuit.drawPath(context, 60 / scale, "#ccc", points);
+        circuit.drawPath(context, 20 * scale, "#999", points);
+        circuit.drawPath(context, 15 * scale, "#ccc", points);
     },
 
     drawPath: function(context, lineWidth, color, points){
