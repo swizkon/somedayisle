@@ -1,11 +1,21 @@
-<h2>Show journey</h2>
+
+
+<%= link "Edit", to: journey_path(@conn, :edit, @journey) %>
+<%= link "Back", to: journey_path(@conn, :index) %>
+<hr/>
+<h1><small>Destination:</small> <%= @journey.name %></h1>
+<p class="lead">
+    <%= @journey.description %>
+</p>
+
+
+
+
+<h2>Prerequisites</h2>
+<h2>Stops</h2>
 
 <ul>
 
-  <li>
-    <strong>Name:</strong>
-    <%= @journey.name %>
-  </li>
 
   <li>
     <strong>Description:</strong>
@@ -14,5 +24,3 @@
 
 </ul>
 
-<%= link "Edit", to: journey_path(@conn, :edit, @journey) %>
-<%= link "Back", to: journey_path(@conn, :index) %>
