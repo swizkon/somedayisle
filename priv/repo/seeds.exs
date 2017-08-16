@@ -9,3 +9,10 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+alias SomedayIsle.Journey
+
+tapout = SomedayIsle.Repo.insert!(%Journey{
+    name: "Complete the TapouT XT challenge",
+    description: "Yo uo yo, MArk Karpinko in the house" 
+})

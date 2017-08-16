@@ -30,6 +30,8 @@ defmodule SomedayIsle.JourneyController do
 
   def show(conn, %{"journeyid" => journeyid}) do
     journey = Repo.get!(Journey, journeyid)
+           |> Repo.preload([:pitstops])
+    IO.inspect journey.pitstops
     render(conn, "show.html", journey: journey)
   end
 

@@ -6,6 +6,8 @@ defmodule SomedayIsle.Pitstop do
     field :description, :string
     belongs_to :journey, SomedayIsle.Journey
 
+    has_many :detours, SomedayIsle.Detour
+
     timestamps()
   end
 

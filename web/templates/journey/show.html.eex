@@ -14,13 +14,17 @@
 <h2>Prerequisites</h2>
 <h2>Stops</h2>
 
+
+  <tbody>
+<%= for pitstop <- @journey.pitstops do %>
+    <tr>
+      <td><%= pitstop.title %></td>
+      <td><%= pitstop.description %></td>
+
+    </tr>
+<% end %>
+  </tbody>
 <ul>
-
-
-  <li>
-    <strong>Description:</strong>
-    <%= @journey.description %>
-  </li>
 
 </ul>
 
