@@ -4,6 +4,7 @@ defmodule SomedayIsle.Pitstop do
   schema "pitstops" do
     field :title, :string
     field :description, :string
+    field :ordinal, :integer
     belongs_to :journey, SomedayIsle.Journey
 
     has_many :detours, SomedayIsle.Detour
