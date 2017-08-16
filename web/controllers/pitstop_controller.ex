@@ -28,6 +28,7 @@ defmodule SomedayIsle.PitstopController do
 
   def show(conn, %{"id" => id}) do
     pitstop = Repo.get!(Pitstop, id)
+        |> Repo.preload([:journey])
     render(conn, "show.html", pitstop: pitstop)
   end
 
