@@ -16,13 +16,13 @@ tapout = SomedayIsle.Repo.insert!(%Journey{
     name: "Complete the TapouT XT",
     description: "Yo yo yo, Mark Karpinko in the house...",
     pitstops: [
-        %Pitstop { "title": "WEEK 1: Cross Core Combat" },
-        %Pitstop { "title": "WEEK 1: Strength & Force Upper + Ultimate Abs" },
-        %Pitstop { "title": "WEEK 1: Plyo XT" },
-        %Pitstop { "title": "WEEK 1: Yoga XT" },
-        %Pitstop { "title": "WEEK 1: Legs & Back" },
-        %Pitstop { "title": "WEEK 1: Sprawl & Brawl" },
-        %Pitstop { "title": "WEEK 1: Rest Day" }
+        %Pitstop {"ordinal": 1,  "title": "WEEK 1: Cross Core Combat"  },
+        %Pitstop {"ordinal": 2, "title": "WEEK 1: Strength & Force Upper + Ultimate Abs" },
+        %Pitstop {"ordinal": 3, "title": "WEEK 1: Plyo XT" },
+        %Pitstop {"ordinal": 4, "title": "WEEK 1: Yoga XT" },
+        %Pitstop {"ordinal": 5, "title": "WEEK 1: Legs & Back" },
+        %Pitstop {"ordinal": 6, "title": "WEEK 1: Sprawl & Brawl" },
+        %Pitstop {"ordinal": 7, "title": "WEEK 1: Rest Day" }
     ]
 })
 
