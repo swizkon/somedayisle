@@ -10,13 +10,16 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-alias SomedayIsle.{Journey,Pitstop}
+alias SomedayIsle.{Repo,Journey,Pitstop}
 
-tapout = SomedayIsle.Repo.insert!(%Journey{
+Repo.delete_all(Pitstop)
+Repo.delete_all(Journey)
+
+tapout = Repo.insert!(%Journey{
     name: "Complete the TapouT XT",
     description: "Yo yo yo, Mark Karpinko in the house...",
     pitstops: [
-        %Pitstop {"ordinal": 1,  "title": "WEEK 1: Cross Core Combat"  },
+        %Pitstop {"ordinal": 1, "title": "WEEK 1: Cross Core Combat"  },
         %Pitstop {"ordinal": 2, "title": "WEEK 1: Strength & Force Upper + Ultimate Abs" },
         %Pitstop {"ordinal": 3, "title": "WEEK 1: Plyo XT" },
         %Pitstop {"ordinal": 4, "title": "WEEK 1: Yoga XT" },
