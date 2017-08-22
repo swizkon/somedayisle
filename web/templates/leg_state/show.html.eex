@@ -1,12 +1,6 @@
 <h2>Show leg state</h2>
 
 <ul>
-
-  <li>
-    <strong>:</strong>
-    <%= @leg_state. %>
-  </li>
-
   <li>
     <strong>Status:</strong>
     <%= @leg_state.status %>

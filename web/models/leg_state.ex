@@ -4,6 +4,7 @@ defmodule SomedayIsle.LegState do
   schema "leg_states" do
     field :status, :string
     belongs_to :user, SomedayIsle.User
+    belongs_to :leg, SomedayIsle.Leg
 
     timestamps()
   end

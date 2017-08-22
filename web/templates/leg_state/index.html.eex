@@ -13,7 +13,6 @@
   <tbody>
 <%= for leg_state <- @leg_states do %>
     <tr>
-      <td><%= leg_state. %></td>
       <td><%= leg_state.status %></td>
       <td><%= leg_state.user %></td>
 

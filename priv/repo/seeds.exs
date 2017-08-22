@@ -10,10 +10,14 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-alias SomedayIsle.{Repo,Journey,Pitstop,User,Traveler,Leg}
+alias SomedayIsle.{Repo,Journey,Pitstop,User,Traveler,Leg,LegState}
 
 Repo.delete_all(Pitstop)
+Repo.delete_all(Traveler)
+Repo.delete_all(LegState)
+Repo.delete_all(Leg)
 Repo.delete_all(Journey)
+Repo.delete_all(User)
 
 jonas = Repo.insert!(%User{name: "jonas", email: "jonas@jerndin.se"})
 
@@ -31,7 +35,15 @@ tapout = Repo.insert!(%Journey{
     ]
 })
 
+Repo.insert!(%LegState{
+    leg_id: 1,
+    user_id: 1,
+    status: "Completed"
+})
+
 Repo.insert!(%Traveler{user: jonas, journey: tapout, name: jonas.name <> ": " <> tapout.name})
+
+
 
 # comments: [
 #     %Comment{body: "Excellent!"}
