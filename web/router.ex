@@ -45,6 +45,10 @@ defmodule SomedayIsle.Router do
   scope "/api", SomedayIsle do
     pipe_through :api
     resources "/detours", DetourController
+    resources "/travelers", TravelerController
+    resources "/users", UserController
+    resources "/legs", LegController
+    resources "/legstates", LegStateController
   end
 
 end

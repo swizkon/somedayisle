@@ -8,6 +8,7 @@ defmodule SomedayIsle.Journey do
   schema "journeys" do
     field :name, :string
     field :description, :string
+    has_many :legs, SomedayIsle.Leg
     has_many :pitstops, SomedayIsle.Pitstop
     timestamps
   end

@@ -4,12 +4,12 @@ defmodule SomedayIsle.Repo.Migrations.CreateDetour do
   def change do
     create table(:detours) do
       add :name, :string
-      add :desc, :string
-      add :pitstop_id, references(:pitstops, on_delete: :nothing)
+      add :description, :string
+      add :leg_id, references(:legs, on_delete: :nothing)
 
       timestamps()
     end
-    create index(:detours, [:pitstop_id])
+    create index(:detours, [:leg_id])
 
   end
 end

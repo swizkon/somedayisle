@@ -1,0 +1,18 @@
+<h2>Show leg</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @leg.name %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @leg.description %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: leg_path(@conn, :edit, @leg) %>
+<%= link "Back", to: leg_path(@conn, :index) %>

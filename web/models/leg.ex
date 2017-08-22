@@ -1,13 +1,11 @@
-defmodule SomedayIsle.Pitstop do
+defmodule SomedayIsle.Leg do
   use SomedayIsle.Web, :model
 
-  schema "pitstops" do
-    field :title, :string
+  schema "legs" do
+    field :name, :string
     field :description, :string
     field :ordinal, :integer
     belongs_to :journey, SomedayIsle.Journey
-
-    has_many :detours, SomedayIsle.Detour
 
     timestamps()
   end
@@ -17,7 +15,7 @@ defmodule SomedayIsle.Pitstop do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:title, :description, :ordinal])
-    |> validate_required([:title, :description])
+    |> cast(params, [:name, :description])
+    |> validate_required([:name, :description])
   end
 end

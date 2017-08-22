@@ -3,7 +3,7 @@ defmodule SomedayIsle.Detour do
 
   schema "detours" do
     field :name, :string
-    field :desc, :string
+    field :description, :string
 
     belongs_to :pitstop, SomedayIsle.Pitstop
 
@@ -15,7 +15,7 @@ defmodule SomedayIsle.Detour do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name, :desc])
-    |> validate_required([:name, :desc])
+    |> cast(params, [:name, :description])
+    |> validate_required([:name, :description])
   end
 end
