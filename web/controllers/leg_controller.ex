@@ -28,6 +28,7 @@ defmodule SomedayIsle.LegController do
 
   def show(conn, %{"id" => id}) do
     leg = Repo.get!(Leg, id)
+    |> Repo.preload([:journey])
     render(conn, "show.html", leg: leg)
   end
 

@@ -1,4 +1,5 @@
-<h2>Show leg</h2>
+<h2><%= @leg.name %> <small>- <%= @leg.journey.name %></small></h2>
+<h4></h4>
 
 <ul>
 
@@ -14,5 +15,8 @@
 
 </ul>
 
+<%= link "Journey", to: journey_path(@conn, :show, @leg.journey) %>
+ | 
 <%= link "Edit", to: leg_path(@conn, :edit, @leg) %>
+ | 
 <%= link "Back", to: leg_path(@conn, :index) %>

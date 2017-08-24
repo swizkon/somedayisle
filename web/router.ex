@@ -30,6 +30,17 @@ defmodule SomedayIsle.Router do
     put "/:journeyid", JourneyController, :update
   end
 
+  scope "/legs", SomedayIsle do  
+    pipe_through :browser # Use the default browser stack
+    get "/edit/:id", LegController, :edit
+    get "/", LegController, :index
+    get "/new", LegController, :new
+    get "/:id", LegController, :show
+    delete "/:id", LegController, :delete
+    post "/", LegController, :create
+    put "/:id", LegController, :update
+  end
+
   scope "/pitstops", SomedayIsle do  
     pipe_through :browser # Use the default browser stack
     get "/edit/:id", PitstopController, :edit
@@ -47,7 +58,6 @@ defmodule SomedayIsle.Router do
     resources "/detours", DetourController
     resources "/travelers", TravelerController
     resources "/users", UserController
-    resources "/legs", LegController
     resources "/legstates", LegStateController
   end
 

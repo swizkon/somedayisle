@@ -12,19 +12,16 @@
 
 
 <h2>Prerequisites</h2>
-<h2>Stops</h2>
+<h2>Legs</h2>
 
-
+<table>
   <tbody>
-<%= for pitstop <- @journey.pitstops do %>
+<%= for leg <- Enum.sort(@journey.legs, &(&1.ordinal <= &2.ordinal))  do %>
     <tr>
-      <td><%= pitstop.title %></td>
-      <td><%= pitstop.description %></td>
-
+      <td><%= leg.ordinal %></td>
+      <td><%= leg.name %></td>
+      <td><%= leg.description %></td>
     </tr>
 <% end %>
   </tbody>
-<ul>
-
-</ul>
-
+  </table>
