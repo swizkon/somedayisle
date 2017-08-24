@@ -1,20 +1,21 @@
 defmodule SomedayIsle.LegController do
   use SomedayIsle.Web, :controller
 
-  alias SomedayIsle.Leg
+  alias SomedayIsle.{Leg,Journey}
 
   def index(conn, _params) do
     legs = Repo.all(Leg)
     render(conn, "index.html", legs: legs)
   end
 
-  def new(conn, _params) do
-    changeset = Leg.changeset(%Leg{})
+  def new(conn, %{"journeyid" => journeyid}) do
+    changeset = Leg.changeset(%Leg{"journey_id": journeyid})
     render(conn, "new.html", changeset: changeset)
   end
 
   def create(conn, %{"leg" => leg_params}) do
-    changeset = Leg.changeset(%Leg{}, leg_params)
+    journey = Repo.get!(Journey, leg_params["journey_id"])
+    changeset = Leg.changeset(%Leg{journey: journey}, leg_params)
 
     case Repo.insert(changeset) do
       {:ok, _leg} ->
