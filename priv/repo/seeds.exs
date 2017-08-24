@@ -31,7 +31,15 @@ tapout = Repo.insert!(%Journey{
         %Leg {"ordinal": 4, "name": "WEEK 1: Yoga XT" },
         %Leg {"ordinal": 5, "name": "WEEK 1: Legs & Back" },
         %Leg {"ordinal": 6, "name": "WEEK 1: Sprawl & Brawl" },
-        %Leg {"ordinal": 7, "name": "WEEK 1: Rest Day" }
+        %Leg {"ordinal": 7, "name": "WEEK 1: Rest Day" },
+
+        %Leg {"ordinal": 8, "name": "WEEK 2: Competition Core" },
+        %Leg {"ordinal": 9, "name": "WEEK 2: Strength & Force Upper + Ultimate Abs" },
+        %Leg {"ordinal": 10, "name": "WEEK 2: Plyo XT" },
+        %Leg {"ordinal": 11, "name": "WEEK 2: Yoga XT" },
+        %Leg {"ordinal": 12, "name": "WEEK 2: Legs & Back" },
+        %Leg {"ordinal": 13, "name": "WEEK 2: Cardio XT + Ultimate Abs" },
+        %Leg {"ordinal": 14, "name": "WEEK 2: Rest Day" }
     ]
 })
 

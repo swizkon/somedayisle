@@ -4,6 +4,9 @@ defmodule SomedayIsle.Traveler do
   schema "travelers" do
     field :name, :string
 
+    field :completed_legs, :integer
+    field :total_legs, :integer
+
     belongs_to :user, SomedayIsle.User
     belongs_to :journey, SomedayIsle.Journey
 

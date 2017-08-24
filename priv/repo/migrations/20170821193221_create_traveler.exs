@@ -4,7 +4,8 @@ defmodule SomedayIsle.Repo.Migrations.CreateTraveler do
   def change do
     create table(:travelers) do
       add :name, :string
-      #add :user_id, :integer
+      add :completed_legs, :integer
+      add :total_legs, :integer
       add :user_id, references(:journeys, on_delete: :nothing)
       add :journey_id, references(:journeys, on_delete: :nothing)
 
