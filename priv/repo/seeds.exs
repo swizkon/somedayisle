@@ -62,16 +62,17 @@ tapout = Repo.insert!(%Journey{
     ]
 })
 
-DatabaseSeeder.completed_leg(1,1) |> Repo.insert!
-DatabaseSeeder.completed_leg(1,2) |> Repo.insert!
-DatabaseSeeder.completed_leg(1,3) |> Repo.insert!
-DatabaseSeeder.completed_leg(1,4) |> Repo.insert!
-DatabaseSeeder.completed_leg(1,5) |> Repo.insert!
-DatabaseSeeder.completed_leg(1,6) |> Repo.insert!
-DatabaseSeeder.completed_leg(1,7) |> Repo.insert!
-DatabaseSeeder.completed_leg(1,8) |> Repo.insert!
-DatabaseSeeder.completed_leg(1,9) |> Repo.insert!
+DatabaseSeeder.completed_leg(1, 1) |> Repo.insert!
+DatabaseSeeder.completed_leg(1, 2) |> Repo.insert!
+DatabaseSeeder.completed_leg(1, 3) |> Repo.insert!
+DatabaseSeeder.completed_leg(1, 4) |> Repo.insert!
+DatabaseSeeder.completed_leg(1, 5) |> Repo.insert!
+DatabaseSeeder.completed_leg(1, 6) |> Repo.insert!
+DatabaseSeeder.completed_leg(1, 7) |> Repo.insert!
+DatabaseSeeder.completed_leg(1, 8) |> Repo.insert!
+DatabaseSeeder.completed_leg(1, 9) |> Repo.insert!
 DatabaseSeeder.completed_leg(1,10) |> Repo.insert!
+DatabaseSeeder.completed_leg(1,11) |> Repo.insert!
 
 Repo.insert!(%Traveler{user: jonas, journey: tapout, name: jonas.name <> ": " <> tapout.name})
 
