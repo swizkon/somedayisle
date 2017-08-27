@@ -10,7 +10,7 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-alias SomedayIsle.{Repo,Journey,Pitstop,User,Traveler,Leg,LegState}
+alias SomedayIsle.{Repo,Journey,Pitstop,User,Traveler,Leg,LegState,TravelPlan}
 
 defmodule DatabaseSeeder do
 
@@ -37,6 +37,7 @@ Repo.delete_all(LegState)
 Repo.delete_all(Leg)
 Repo.delete_all(Journey)
 Repo.delete_all(User)
+
 
 jonas = Repo.insert!(%User{name: "jonas", email: "jonas@jerndin.se"})
 
@@ -75,6 +76,10 @@ DatabaseSeeder.completed_leg(1,10) |> Repo.insert!
 DatabaseSeeder.completed_leg(1,11) |> Repo.insert!
 
 Repo.insert!(%Traveler{user: jonas, journey: tapout, name: jonas.name <> ": " <> tapout.name})
+
+
+%TravelPlan{name: "Beginner to winner"} |> Repo.insert!
+
 
 
 

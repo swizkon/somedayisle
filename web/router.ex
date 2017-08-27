@@ -17,6 +17,9 @@ defmodule SomedayIsle.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+
+    resources "/travelers", TravelerController
+    resources "/travelplans", TravelPlanController
   end
 
   scope "/journeys", SomedayIsle do  
@@ -56,9 +59,9 @@ defmodule SomedayIsle.Router do
   scope "/api", SomedayIsle do
     pipe_through :api
     resources "/detours", DetourController
-    resources "/travelers", TravelerController
     resources "/users", UserController
     resources "/legstates", LegStateController
   end
+
 
 end
