@@ -12,7 +12,7 @@ defmodule SomedayIsle.DetourView do
   def render("detour.json", %{detour: detour}) do
     %{id: detour.id,
       name: detour.name,
-      #pitstop: detour.pitstop,
+      leg: detour.leg,
       desc: detour.desc}
   end
 end

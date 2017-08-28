@@ -9,7 +9,6 @@ defmodule SomedayIsle.Journey do
     field :name, :string
     field :description, :string
     has_many :legs, SomedayIsle.Leg
-    has_many :pitstops, SomedayIsle.Pitstop
     timestamps
   end
 

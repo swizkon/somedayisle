@@ -10,7 +10,7 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-alias SomedayIsle.{Repo,Journey,Pitstop,User,Traveler,Leg,LegState,TravelPlan}
+alias SomedayIsle.{Repo,Journey,User,Traveler,Leg,LegState,TravelPlan}
 
 defmodule DatabaseSeeder do
 
@@ -31,7 +31,6 @@ defmodule DatabaseSeeder do
     end
 end
 
-Repo.delete_all(Pitstop)
 Repo.delete_all(Traveler)
 Repo.delete_all(LegState)
 Repo.delete_all(Leg)
@@ -53,8 +52,8 @@ tapout = Repo.insert!(%Journey{
         %Leg {"ordinal": 6, "name": "WEEK 1: Sprawl & Brawl" },
         %Leg {"ordinal": 7, "name": "WEEK 1: Rest Day" },
 
-        %Leg {"ordinal": 8, "name": "WEEK 2: Competition Core" },
-        %Leg {"ordinal": 9, "name": "WEEK 2: Strength & Force Upper + Ultimate Abs" },
+        %Leg {"ordinal":  8, "name": "WEEK 2: Competition Core" },
+        %Leg {"ordinal":  9, "name": "WEEK 2: Strength & Force Upper + Ultimate Abs" },
         %Leg {"ordinal": 10, "name": "WEEK 2: Plyo XT" },
         %Leg {"ordinal": 11, "name": "WEEK 2: Yoga XT" },
         %Leg {"ordinal": 12, "name": "WEEK 2: Legs & Back" },
@@ -74,6 +73,7 @@ DatabaseSeeder.completed_leg(1, 8) |> Repo.insert!
 DatabaseSeeder.completed_leg(1, 9) |> Repo.insert!
 DatabaseSeeder.completed_leg(1,10) |> Repo.insert!
 DatabaseSeeder.completed_leg(1,11) |> Repo.insert!
+DatabaseSeeder.completed_leg(1,12) |> Repo.insert!
 
 Repo.insert!(%Traveler{user: jonas, journey: tapout, name: jonas.name <> ": " <> tapout.name})
 

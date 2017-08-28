@@ -5,7 +5,9 @@ defmodule SomedayIsle.Leg do
     field :name, :string
     field :description, :string
     field :ordinal, :integer
+
     belongs_to :journey, SomedayIsle.Journey
+    has_many :detours, SomedayIsle.Detour
 
     timestamps()
   end

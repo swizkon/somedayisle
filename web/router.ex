@@ -44,17 +44,6 @@ defmodule SomedayIsle.Router do
     put "/:id", LegController, :update
   end
 
-  scope "/pitstops", SomedayIsle do  
-    pipe_through :browser # Use the default browser stack
-    get "/edit/:id", PitstopController, :edit
-    get "/", PitstopController, :index
-    get "/new", PitstopController, :new
-    get "/:id", PitstopController, :show
-    delete "/:id", PitstopController, :delete
-    post "/", PitstopController, :create
-    put "/:id", PitstopController, :update
-  end
-
   # Other scopes may use custom stacks.
   scope "/api", SomedayIsle do
     pipe_through :api

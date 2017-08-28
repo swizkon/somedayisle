@@ -5,7 +5,7 @@ defmodule SomedayIsle.Detour do
     field :name, :string
     field :description, :string
 
-    belongs_to :pitstop, SomedayIsle.Pitstop
+    belongs_to :leg, SomedayIsle.Leg
 
     timestamps()
   end
