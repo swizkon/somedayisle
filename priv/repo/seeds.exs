@@ -81,6 +81,7 @@ DatabaseSeeder.completed_leg(1,12) |> Repo.insert!
 DatabaseSeeder.completed_leg(1,13) |> Repo.insert!
 DatabaseSeeder.completed_leg(1,14) |> Repo.insert!
 DatabaseSeeder.completed_leg(1,15) |> Repo.insert!
+DatabaseSeeder.completed_leg(1,16) |> Repo.insert!
 
 Repo.insert!(%Traveler{user: jonas, journey: tapout, name: jonas.name <> ": " <> tapout.name})
 
