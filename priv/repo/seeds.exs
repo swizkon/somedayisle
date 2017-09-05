@@ -60,9 +60,12 @@ tapout = Repo.insert!(%Journey{
         %Leg {"ordinal": 13, "name": "WEEK 2: Cardio XT + Ultimate Abs" },
         %Leg {"ordinal": 14, "name": "WEEK 2: Rest Day" },
 
-
         %Leg {"ordinal": 15, "name": "WEEK 3: Cross Core Combat" },
-        %Leg {"ordinal": 16, "name": "WEEK 3: Strength & Force Upper + Ultimate Abs" }
+        %Leg {"ordinal": 16, "name": "WEEK 3: Strength & Force Upper + Ultimate Abs" },
+        %Leg {"ordinal": 17, "name": "WEEK 3: Plyo XT" },
+        %Leg {"ordinal": 18, "name": "WEEK 3: Legs & Back" },
+        %Leg {"ordinal": 19, "name": "WEEK 3: Sprawl & Brawl" },
+        %Leg {"ordinal": 20, "name": "WEEK 3: Rest Day" }
     ]
 })
 
@@ -82,15 +85,10 @@ DatabaseSeeder.completed_leg(1,13) |> Repo.insert!
 DatabaseSeeder.completed_leg(1,14) |> Repo.insert!
 DatabaseSeeder.completed_leg(1,15) |> Repo.insert!
 DatabaseSeeder.completed_leg(1,16) |> Repo.insert!
+DatabaseSeeder.completed_leg(1,17) |> Repo.insert!
 
 Repo.insert!(%Traveler{user: jonas, journey: tapout, name: jonas.name <> ": " <> tapout.name})
 
 
 %TravelPlan{name: "Beginner to winner"} |> Repo.insert!
 
-
-
-
-# comments: [
-#     %Comment{body: "Excellent!"}
-#   ]
