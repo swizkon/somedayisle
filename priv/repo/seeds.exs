@@ -38,7 +38,7 @@ Repo.delete_all(Journey)
 Repo.delete_all(User)
 
 
-jonas = Repo.insert!(%User{name: "jonas", email: "jonas@jerndin.se"})
+jonas = Repo.insert!(%User{name: "jonas", email: "mail@domain.com"})
 
 tapout = Repo.insert!(%Journey{
     name: "Complete the Tapout XT",
