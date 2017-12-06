@@ -38,7 +38,7 @@ Repo.delete_all(Journey)
 Repo.delete_all(User)
 
 
-jonas = Repo.insert!(%User{name: "jonas", email: "mail@domain.com"})
+jonas = Repo.insert!(%User{name: "jonas", email: "mail@somedayisle.net"})
 
 tapout = Repo.insert!(%Journey{
     name: "Complete the Tapout XT",
@@ -120,6 +120,7 @@ DatabaseSeeder.completed_leg(1,27) |> Repo.insert!
 DatabaseSeeder.completed_leg(1,28) |> Repo.insert!
 
 DatabaseSeeder.completed_leg(1,29) |> Repo.insert!
+DatabaseSeeder.completed_leg(1,30) |> Repo.insert!
 
 
 Repo.insert!(%Traveler{user: jonas, journey: tapout, name: jonas.name <> ": " <> tapout.name})
