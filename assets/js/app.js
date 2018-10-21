@@ -4,7 +4,21 @@ var protodata = {
     username: "Malloc Frobnitz",
     journeys: [
         {
-            "name": "",
+            "name": "Azure: Setup a three node Eventstore cluster",
+            "progress": "70",
+            "stepName": "Build a docker image",
+            "stepState": "in progress",
+            "stops": [
+                {
+                    "title": ""
+                }
+            ]
+        },
+        {
+            "name": "Guitar: 4 chords for 1000 songs",
+            "progress": "25",
+            "stepName": "Learn the G-chords",
+            "stepState": "next step",
             "stops": [
                 {
                     "title": ""
@@ -67,9 +81,18 @@ var days = b.diff(a, 'days');
 document.querySelector("#page-title").textContent = protodata.title;
 document.querySelector("#page-subtitle").textContent = protodata.username;
 
+document.querySelector("#journey_count").textContent = protodata.journeys.length;
 
-var upcoming = "";
-for(var i = 1 ; i < 4 ; i++){
-    upcoming += "<h4>" + sorted[i].title + " <small>" + formatDays(moment(sorted[i].next).diff(a, 'days')) + "</small></h4>";
+// journey_count
+
+var upcoming = "", journey;
+
+for(var journeryIndex in protodata.journeys) {
+    journey  =protodata.journeys[journeryIndex];
+    upcoming += "<hr />" 
+    upcoming += "<a href='#'>";
+    upcoming += "<h4>" + journey.name + " <small>" + journey.progress  + "%</small></h4>";
+    upcoming += "<h2><small>" + journey.stepState  + ":</small> " + journey.stepName + " </h2>";
+    upcoming += "</a>";
 }
-document.querySelector("#upcoming").innerHTML = upcoming;
+document.querySelector("#journeys").innerHTML = upcoming;
