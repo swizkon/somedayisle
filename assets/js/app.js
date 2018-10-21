@@ -1,12 +1,18 @@
-// var d = {
-//     "birthdays": [
-//         {"Signes birthday": "2015-02-22T22:11:00.000Z"},
-//         {"desmond": "2009-04-04T03:42:00.000Z"},
-//         {"jenny": "1980-01-01"},
-//         {"jonas": "1980-05-16"}
-//     ],
-//     "anniversaries": [{"First date": "2005-07-03T18:15:00.000Z"}]
-// };
+
+var protodata = {
+    title: "Welcome back",
+    username: "Malloc Frobnitz",
+    journeys: [
+        {
+            "name": "",
+            "stops": [
+                {
+                    "title": ""
+                }
+            ]
+        }
+    ]
+};
 
 var formatDays = function(days) {
 return (days == 0) ? "Today!"
@@ -18,9 +24,6 @@ var today = new Date(Date.now());
 today.setHours(0);
 today.setMinutes(0);
 today.setSeconds(1);
-// today = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-
-// console.log(today.toJSON());
 
 var anniversaries =
     {
@@ -59,8 +62,11 @@ var b = moment(sorted[0].next);
 
 var days = b.diff(a, 'days');
 
-document.querySelector("#next-title").textContent = sorted[0].title;
-document.querySelector("#num-days").textContent = formatDays(days);
+// next-title
+
+document.querySelector("#page-title").textContent = protodata.title;
+document.querySelector("#page-subtitle").textContent = protodata.username;
+
 
 var upcoming = "";
 for(var i = 1 ; i < 4 ; i++){
