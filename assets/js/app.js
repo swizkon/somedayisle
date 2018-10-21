@@ -4,10 +4,10 @@ var protodata = {
     username: "Malloc Frobnitz",
     journeys: [
         {
-            "name": "Azure: Setup a three node Eventstore cluster",
-            "progress": "70",
+            "name": "Azure exam: Setup a three node Eventstore cluster",
+            "progress": "10",
             "stepName": "Build a docker image",
-            "stepState": "in progress",
+            "stepState": "In progress",
             "stops": [
                 {
                     "title": ""
@@ -15,10 +15,10 @@ var protodata = {
             ]
         },
         {
-            "name": "Guitar: 4 chords for 1000 songs",
-            "progress": "25",
-            "stepName": "Learn the G-chords",
-            "stepState": "next step",
+            "name": "Guitar 101: 4 chords for 1000 songs",
+            "progress": "60",
+            "stepName": "Learn the G-chord",
+            "stepState": "Next step",
             "stops": [
                 {
                     "title": ""
@@ -92,7 +92,19 @@ for(var journeryIndex in protodata.journeys) {
     upcoming += "<hr />" 
     upcoming += "<a href='#'>";
     upcoming += "<h4>" + journey.name + " <small>" + journey.progress  + "%</small></h4>";
-    upcoming += "<h2><small>" + journey.stepState  + ":</small> " + journey.stepName + " </h2>";
+    upcoming += "<h1><small>" + journey.stepState  + ":</small> " + journey.stepName + " </h1>";
+    upcoming +=  progress(journey.progress);
     upcoming += "</a>";
 }
+
+
+
+function progress(percent) {
+
+    return "<div class=\"progress\" style=\"width:50%;text-align:center;margin: 0 auto;\">"
+    + "<div class=\"progress-bar\" role=\"progressbar\" style=\"width: " + percent + "%\" aria-valuenow=\"25\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>"
+    + "</div>";
+}
+
+
 document.querySelector("#journeys").innerHTML = upcoming;
