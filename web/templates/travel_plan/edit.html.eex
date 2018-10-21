@@ -1,6 +1,0 @@
-<h2>Edit travel plan</h2>
-
-<%= render "form.html", changeset: @changeset,
-                        action: travel_plan_path(@conn, :update, @travel_plan) %>
-
-<%= link "Back", to: travel_plan_path(@conn, :index) %>

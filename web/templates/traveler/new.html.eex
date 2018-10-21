@@ -1,6 +1,0 @@
-<h2>New traveler</h2>
-
-<%= render "form.html", changeset: @changeset,
-                        action: traveler_path(@conn, :create) %>
-
-<%= link "Back", to: traveler_path(@conn, :index) %>
