@@ -1,7 +1,7 @@
 
 body, div.jumbotron
 {
-    background-color: #999;
+    background-color: #ddd;
 }
 div.jumbotron
 {
@@ -11,14 +11,14 @@ div.jumbotron
 
 h1, h2, h3, h4 {
     text-align: center;
-    text-shadow: 0em 0em 0.2em #000;
+    text-shadow: 0em 0em 0.2em #fff;
     margin-bottom: .5rem;
-    font-weight: 100;
-    color: #fff;
+    font-weight: 200;
+    color: #333;
     text-align: center;
 }
 
-
+/*
 @media screen and (max-width: 480px) {
 body, div.jumbotron
 {
@@ -26,3 +26,4 @@ body, div.jumbotron
     background-color: #999;
 }
 }
+*/
