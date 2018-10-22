@@ -4,6 +4,7 @@ var protodata = {
     username: "Malloc Frobnitz",
     journeys: [
         {
+            "page": "azure.html",
             "name": "Azure exam: Setup a three node Eventstore cluster",
             "progress": "10",
             "stepName": "Build a docker image",
@@ -15,6 +16,7 @@ var protodata = {
             ]
         },
         {
+            "page": "guitar.html",
             "name": "Guitar 101: 4 chords for 1000 songs",
             "progress": "60",
             "stepName": "Learn the G-chord",
@@ -83,21 +85,17 @@ document.querySelector("#page-subtitle").textContent = protodata.username;
 
 document.querySelector("#journey_count").textContent = protodata.journeys.length;
 
-// journey_count
-
 var upcoming = "", journey;
 
 for(var journeryIndex in protodata.journeys) {
     journey  =protodata.journeys[journeryIndex];
     upcoming += "<hr />" 
-    upcoming += "<a href='#'>";
+    upcoming += "<a href=\"" + journey.page + "\">";
     upcoming += "<h4>" + journey.name + " <small>" + journey.progress  + "%</small></h4>";
     upcoming += "<h1><small>" + journey.stepState  + ":</small> " + journey.stepName + " </h1>";
     upcoming +=  progress(journey.progress);
     upcoming += "</a>";
 }
-
-
 
 function progress(percent) {
 
